@@ -1,17 +1,7 @@
-import os
-
-import chainlit as cl
-import openai
-from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 from llama_index import (LLMPredictor, ServiceContext, VectorStoreIndex,
                          download_loader)
-from llama_index.callbacks.base import CallbackManager
 from llama_index.memory import ChatMemoryBuffer
-
-load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
-openai.api_key = os.environ.get("OPENAI_API_KEY")
-SYSTTEM_MESSAGE = "You are a friendly chatbot living in 2023"
 
 
 WikipediaReader = download_loader("WikipediaReader")
@@ -24,7 +14,7 @@ llm_predictor = LLMPredictor(
         temperature=0,
         model_name="gpt-3.5-turbo",
         streaming=True,
-    ),
+    )
 )
 
 service_context = ServiceContext.from_defaults(

@@ -1,20 +1,15 @@
 import os
-import openai
 import re
-import pandas as pd
-from pandasql import sqldf
-
-from llama_index.callbacks.base import CallbackManager
 
 import chainlit as cl
-from llama_index import LLMPredictor, ServiceContext
-from langchain.chat_models import ChatOpenAI
-
+import openai
+import pandas as pd
 from dotenv import load_dotenv
-
-
+from langchain.chat_models import ChatOpenAI
+from llama_index import LLMPredictor, ServiceContext
+from llama_index.callbacks.base import CallbackManager
 from llama_index.query_engine import PandasQueryEngine
-
+from pandasql import sqldf
 
 load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
 openai.api_key = os.environ.get("OPENAI_API_KEY")
@@ -74,7 +69,7 @@ def custom_output_processor(
     clean_output = remove_sql_code_quotes(output)
 
     result = pysqldf(clean_output)
-    
+
     cl.user_session.set("chat_result_df", df)
 
     return f"Using Query:\n```sql\n{output}\n```\n Result:\n\n {result}"

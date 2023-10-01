@@ -1,18 +1,12 @@
 import os
-import openai
-from llama_index.callbacks.base import CallbackManager
 
 import chainlit as cl
-
-from langchain.chat_models import ChatOpenAI
-
+import openai
 from dotenv import load_dotenv
-
-
+from langchain.chat_models import ChatOpenAI
+from llama_index.callbacks.base import CallbackManager
 from llama_index.chat_engine import SimpleChatEngine
-
 from llama_index.memory import ChatMemoryBuffer
-
 
 load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
 openai.api_key = os.environ.get("OPENAI_API_KEY")
