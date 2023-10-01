@@ -13,7 +13,7 @@ from query_rag import query_engine as quey_base_engine
 from tools import code_interpreter_tool, show_image_tool
 from vector_rag import query_engine as vector_base_engine
 
-load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
+load_dotenv()
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 query_engine_tools = [

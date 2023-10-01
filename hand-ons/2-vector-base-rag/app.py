@@ -9,7 +9,7 @@ from llama_index import (LLMPredictor, ServiceContext, VectorStoreIndex,
 from llama_index.callbacks.base import CallbackManager
 from llama_index.memory import ChatMemoryBuffer
 
-load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
+load_dotenv()
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 SYSTTEM_MESSAGE = "You are a friendly chatbot living in 2023"
 

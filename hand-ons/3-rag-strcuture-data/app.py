@@ -11,7 +11,7 @@ from llama_index.callbacks.base import CallbackManager
 from llama_index.query_engine import PandasQueryEngine
 from pandasql import sqldf
 
-load_dotenv("/Users/sangtnguyen/Coding/Personal/practical-rag/.env")
+load_dotenv()
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 
