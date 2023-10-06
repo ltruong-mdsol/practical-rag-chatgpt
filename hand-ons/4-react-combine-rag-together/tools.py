@@ -8,7 +8,9 @@ from llama_index.tools.function_tool import FunctionTool
 def code_interpreter(code: str):
     """
     A function to execute python code, and return the stdout and stderr
-
+    
+    If you want make a plot. You must not display the chart directly using plt.show. You must save this into a file name 'image.jpg' then use load_image with input {'filename' : 'image.jpg'} in next step
+    
     Don't use single quote ' such as Ronaldo's in your code. This will crash the app
 
     You should import any libraries that you wish to use. You have access to any libraries the user has installed.
@@ -20,7 +22,6 @@ def code_interpreter(code: str):
 
     It is not possible to return graphics or other complicated data from this function. If the user cannot see the output, save it to a file and tell the user.
 
-    If you want make a plot. You must not display the chart directly. Don't use plt.show. You must save this into a file name 'image.jpg' then use load_image with input {'filename' : 'image.jpg'} in next step
     """
     result = subprocess.run(
         [sys.executable, "-c", code],
@@ -38,7 +39,7 @@ def show_image(filename: str):
     """
     cl.user_session.set("image", filename)
 
-    return "Done, Image load to screen successfully. Ask user to check the image. Don't through anything"
+    print("Done, Image load to screen successfully. Ask user to check the image. Don't through anything")
 
 
 code_interpreter_tool = FunctionTool.from_defaults(fn=code_interpreter)

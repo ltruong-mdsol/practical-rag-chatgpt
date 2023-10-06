@@ -41,10 +41,8 @@ async def on_start():
     index = VectorStoreIndex.from_documents(documents)
 
     chat_engine = index.as_chat_engine(
-        chat_mode="react", memory=memory, service_context=service_context
+        chat_mode="condense_question", memory=memory, service_context=service_context
     )
-
-    print(chat_engine.tools)
 
     cl.user_session.set("chat_engine", chat_engine)
 

@@ -28,7 +28,7 @@ query_engine_tools = [
         query_engine=quey_base_engine,
         metadata=ToolMetadata(
             name="check_goal",
-            description="Provide information about Ronaldo's goal in all career. Please give me raw user question",
+            description="Query Ronaldo's goal in all career. Please give me raw user question",
         ),
     ),
     show_image_tool,
@@ -40,7 +40,7 @@ query_engine_tools = [
 async def on_start():
     llm = OpenAI(
         temperature=0,
-        model_name="gpt-3.5-turbo",
+        model_name="gpt-4",
         streaming=True,
     )
 
@@ -57,9 +57,6 @@ async def on_start():
     print(agent._tools_dict)
 
     cl.user_session.set("chat_engine", agent)
-
-    await cl.Message("![](./image.jpg)").send()
-
 
 @cl.on_message
 async def on_message(message):

@@ -2,4 +2,4 @@ langchain
 llama-index
 llama-hub
 chainlit
-gptcache
+pandasql

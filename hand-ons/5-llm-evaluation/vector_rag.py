@@ -27,3 +27,8 @@ memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
 index = VectorStoreIndex.from_documents(documents)
 
 query_engine = index.as_query_engine(service_context=service_context)
+
+
+
+WikipediaReader = download_loader("WikipediaReader")
+wikipedia_reader = WikipediaReader()
